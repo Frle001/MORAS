@@ -1,0 +1,57 @@
+CHIP Mult {
+	IN a[16], b[16], load;
+	OUT out[16];
+	PARTS:
+	Register (in = a, load = load, out = outa);
+	Register (in = b, load = load, out = outb);
+	
+	Add16 (a = false, b = a, out = out1);
+	Mux16 (a = false, b = out1, sel = b[15], out = outm1);
+	BitShiftL (in = outm1, out = o1);
+	Add16 (a = o1, b = a, out = out2);
+	Mux16 (a = o1, b = out2, sel = b[14], out = outm2);
+	BitShiftL (in = outm2, out = o2);
+	Add16 (a = o2, b = a, out = out3);
+	Mux16 (a = o2, b = out3, sel = b[13], out = outm3);
+	BitShiftL (in = outm3, out = o3);
+	Add16 (a = o3, b = a, out = out4);
+	Mux16 (a = o3, b = out4, sel = b[12], out = outm4);
+	BitShiftL (in = outm4, out = o4);
+	Add16 (a = o4, b = a, out = out5);
+	Mux16 (a = o4, b = out5, sel = b[11], out = outm5);
+	BitShiftL (in =outm5, out = o5);
+	Add16 (a = o5, b = a, out = out6);
+	Mux16 (a = o5, b = out6, sel = b[10], out = outm6);
+	BitShiftL (in = outm6, out = o6);
+	Add16 (a = o6, b = a, out = out7);
+	Mux16 (a = o6, b = out7, sel = b[9], out = outm7);
+	BitShiftL (in = outm7, out = o7);
+	Add16 (a = o7, b = a, out = out8);
+	Mux16 (a = o7, b = out8, sel = b[8], out = outm8);
+	BitShiftL (in = outm8, out = o8);
+	Add16 (a = o8, b = a, out = out9);
+	Mux16 (a = o8, b = out9, sel = b[7], out = outm9);
+	BitShiftL (in = outm9, out = o9);
+	Add16 (a = o9, b = a, out = out10);
+	Mux16 (a = o9, b = out10, sel = b[6], out = outm10);
+	BitShiftL (in = outm10, out = o10);
+	Add16 (a = o10, b = a, out = out11);
+	Mux16 (a = o10, b = out11, sel = b[5], out = outm11);
+	BitShiftL (in = outm11, out = o11);
+	Add16 (a = o11, b = a, out = out12);
+	Mux16 (a = o11, b = out12, sel = b[4], out = outm12);
+	BitShiftL (in = outm12, out = o12);
+	Add16 (a = o12, b = a, out = out13);
+	Mux16 (a = o12, b = out13, sel = b[3], out = outm13);
+	BitShiftL (in = outm13, out = o13);
+	Add16 (a = o13, b = a, out = out14);
+	Mux16 (a = o13, b = out14, sel = b[2], out = outm14);
+	BitShiftL (in = outm14, out = o14);
+	Add16 (a = o14, b = a, out = out15);
+	Mux16 (a = o14, b = out15, sel = b[1], out = outm15);
+	BitShiftL (in = outm15, out = o15);
+	Add16 (a = o15, b = a, out = out16);
+	Mux16 (a = o15, b = out16, sel = b[0], out = o16);
+	Mux16 (a = o16, b = false, sel = load, out = out);
+	
+}
