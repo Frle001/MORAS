@@ -1,0 +1,39 @@
+function RJ.fibonacci 4
+push constant 0
+pop local 0
+push constant 1
+pop local 1
+push constant 2
+pop local 3
+push argument 0
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 3
+push argument 0
+gt
+not
+not
+if-goto WHILE_END0
+push local 0
+push local 1
+add
+pop local 2
+push local 1
+pop local 0
+push local 2
+pop local 1
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+return

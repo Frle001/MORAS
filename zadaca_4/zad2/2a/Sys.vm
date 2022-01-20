@@ -1,0 +1,7 @@
+function Sys.init 0
+push constant 9
+push constant 19
+push constant 29
+call RJ.mid 3
+label END
+goto END

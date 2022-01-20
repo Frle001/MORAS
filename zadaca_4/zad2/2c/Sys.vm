@@ -1,0 +1,9 @@
+function Sys.init 0
+push constant 85
+push constant 10
+call RJ.div 2
+push constant 95
+push constant 9
+call RJ.mod 2
+label END
+goto END
