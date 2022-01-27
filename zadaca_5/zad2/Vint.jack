@@ -1,0 +1,158 @@
+class Vint{
+	field int size, capacity, max_elem;
+	field Array polje;
+	constructor Vint new(int a){
+		var int i;
+		if(a < 0){
+			let size = 0;
+			let max_elem = 0;
+			let capacity = 1;
+			let polje = Array.new(capacity);
+		}
+		else{
+			let size = 0;
+			let i = 1;
+			while(i < a){
+				let i = i * 2;
+			}
+			let capacity = i;
+			let polje = Array.new(capacity);
+		}
+		return this;
+	}
+	
+	method void push_back(int n){
+		var Array temp;
+		var int i;
+		let polje[size] = n;
+		let size = size + 1;
+		if(size = capacity){
+			let capacity = capacity * 2;
+			let i = 0;
+			let temp = Array.new(capacity);
+			while(i < size){
+				let temp[i] = polje[i];
+				let i = i + 1;
+			}
+			do polje.dispose();
+			let polje = Array.new(capacity);
+			let i = 0;
+			while(i < size){
+				let polje[i] = temp[i];
+				let i = i + 1;
+			}
+			do temp.dispose();
+		}
+		return;
+	
+	
+	}
+	
+	method void set(int n, int k){
+		let polje[n] = k;
+		return;
+	}
+	
+	method int get(int n){
+		return polje[n];
+	}
+	
+	method int get_max(){
+		return max_elem;
+	}
+	
+	method int len(){
+		return capacity;
+	}
+	method int size(){
+		return size;
+	}
+	
+	method void resize(int m){
+		var Array temp;
+		var int i;
+		let i = 1;
+		while(m > 0){
+			let i = i * 2;
+			let m = m - 1;
+		}
+		if(i < size){
+			let size = i;
+			let capacity = i*2;
+		}
+		else{
+			let capacity = i;
+		}
+		let temp = Array.new(i);
+		let i = 0;
+		while(i < size){
+			let temp[i] = polje[i];
+			let i = i + 1;
+		}
+		
+		do polje.dispose();
+		let polje = Array.new(capacity);
+		let i = 0;
+		while(i < size){
+			let polje[i] = temp[i];
+			let i = i + 1;
+		}
+		do temp.dispose();
+	
+		return;
+	}
+	
+	method bool is_eq(Vint c){
+		var int i;
+		if(size = c.size()){
+			let i = 0;
+			while(i < size){
+				if(~(polje[i] = c.get(i))){ return false; } 
+				let i = i + 1;
+			}
+			return true;
+		}
+		else { return false; }
+	}
+	method bool elems(Vint c){
+		var Quicksort sort1, sort2;
+		var Array a;
+		var int i;
+		let a = Array.new(c.size());
+		let i = 0;
+		while(i < c.size()){	
+			let a[i] = c.get(i);
+			let i = i + 1;
+		}
+		
+		let sort1 = Quicksort.new(polje, size);
+		let sort2 = Quicksort.new(a, c.size());
+		
+		if(size = c.size()){
+			let i = 0;
+			while(i < size){
+				if(~(sort1.get(i) = sort2.get(i))){
+					return false;
+				}
+				let i = i + 1;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	method void print(){
+		var int i;
+		var strint s;
+		let i = 0;
+		while(i < size){
+			do Output.printInt(polje[i]);
+			do Output.printString(" ");
+			let i = i + 1;
+		}
+		do Output.printChar(String.newLine());
+		
+		return;
+	}
+
+}

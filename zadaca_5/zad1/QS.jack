@@ -1,0 +1,40 @@
+class QS
+{
+	function void sort(Array A, int s, int e)
+	{	
+		var int p;
+		if(s<e) 
+		{
+			let p=QS.partition(A,  s ,  e);
+			do QS.sort(A, s, p-1);
+			do QS.sort(A, p+1, e);
+		}
+		return;
+	}
+	function int partition(Array A, int s, int e)
+	{
+		var int element i,j;
+		let element = A[e];
+		let i=s;
+		let j=s;
+		while (j< e)
+		 {
+			if( A[j] < element)
+			{
+				do QS.swap(A,i,j);
+				let i=i+1;
+			}
+			let j= j+1;
+		 }
+		do QS.swap(A, i ,e);	 
+		return i;
+	}
+	function void swap(Array A, int i,int j)
+	{
+		var int temp;
+		let temp= A[i];
+		let A[i]=A[j];
+		let A[j]=temp;
+		return;
+	}
+}
